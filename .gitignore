@@ -1,0 +1,19 @@
+# Git
+.git
+
+# Dependency directories
+node_modules/
+.env
+
+# Quasar artifacts
+/dist/
+.quasar/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
