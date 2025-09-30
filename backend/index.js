@@ -59,14 +59,17 @@ async function saveDocToSql(doc) {
     // 重新寫入所有項目
     for (const item of items) {
       const request = pool.request();
+
+      // 現在只需傳遞 Automerge 文件中實際有的四個欄位
       request.input("FirstName", sql.NVarChar, item.FirstName);
       request.input("LastName", sql.NVarChar, item.LastName);
       request.input("input_Department", sql.NVarChar, item.Department);
       request.input("input_Position", sql.NVarChar, item.Position);
 
+      // SQL 語法現在也只包含這四個欄位 (不包含 EmployeeID，因為它是 IDENTITY)
       const query = `
-        INSERT INTO PWA_Offline_poc (FirstName, LastName, Department, Position, HireDate, BirthDate, Gender, Email, PhoneNumber, Address, Status)
-        VALUES (@FirstName, @LastName, @input_Department, @input_Position, GETDATE(), '1990-01-01', 'M', '', '', '', 'Active')
+        INSERT INTO PWA_Offline_poc (FirstName, LastName, Department, Position)
+        VALUES (@FirstName, @LastName, @input_Department, @input_Position)
       `;
       await request.query(query);
     }
