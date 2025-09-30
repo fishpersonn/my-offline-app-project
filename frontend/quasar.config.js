@@ -79,7 +79,7 @@ export default defineConfig((/* ctx */) => {
     devServer: {
       // https: true,
       open: true, // opens browser window automatically
-      host: '192.168.1.100' // 將這裡的 IP 位址換成你的電腦 IP
+      host: '192.168.4.118', // 將這裡的 IP 位址換成你的電腦 IP
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework
